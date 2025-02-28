@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Conectar a Rocky Linux vía SSH
+      -name: Conectar a Rocky Linux vía SSH
       uses: appleboy/ssh-action@master
       with:
         host: "${{ secrets.SERVER_IP }}"
@@ -18,4 +18,3 @@ jobs:
         script: |
           echo "✅ Conexión SSH exitosa"
           echo "🔑 Valor del Secret de prueba: ${{ secrets.SSH_TEST_SECRET }}"
-
