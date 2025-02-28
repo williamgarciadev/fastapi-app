@@ -1,0 +1,21 @@
+name: Test SSH Connection
+
+on:
+  workflow_dispatch:  # Permite ejecutarlo manualmente desde GitHub Actions
+
+jobs:
+  test-ssh:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Conectar a Rocky Linux vía SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: "${{ secrets.SERVER_IP }}"
+        username: "${{ secrets.SSH_USER }}"
+        port: "${{ secrets.SSH_PORT }}"
+        key: "${{ secrets.SSH_PRIVATE_KEY }}"
+        script: |
+          echo "✅ Conexión SSH exitosa"
+          echo "🔑 Valor del Secret de prueba: ${{ secrets.SSH_TEST_SECRET }}"
+
