@@ -19,5 +19,5 @@ jobs:
         key: "${{ secrets.SSH_PRIVATE_KEY }}"
         script: |
           cd /home/wigamu/proyectos/fastapi-app
-	  ./deploy.sh
+          ./deploy.sh
 
