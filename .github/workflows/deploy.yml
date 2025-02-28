@@ -1,0 +1,21 @@
+name: Deploy FastAPI on Rocky Linux
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH into Rocky Linux Server and Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: "80.241.211.8"
+        username: "williamgarciadev"
+        key: "${{ secrets.SSH_PRIVATE_KEY }}"
+        script: |
+          cd ~/fastapi-app
+          ./deploy.sh
