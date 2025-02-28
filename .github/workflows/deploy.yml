@@ -18,6 +18,9 @@ jobs:
         port: 50422
         key: "${{ secrets.SSH_PRIVATE_KEY }}"
         script: |
-          cd /home/wigamu/proyectos/fastapi-app
-          ./deploy.sh
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -p 50422 wigamu@80.241.211.8 "cd /home/wigamu/proyectos/fastapi-app && ./deploy.sh"
 
