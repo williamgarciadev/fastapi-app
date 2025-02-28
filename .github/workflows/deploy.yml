@@ -15,7 +15,8 @@ jobs:
       with:
         host: "80.241.211.8"
         username: "wigamu"
+        port: 50422
         key: "${{ secrets.SSH_PRIVATE_KEY }}"
         script: |
-          cd ~/fastapi-app
+          cd /home/wigamu/proyectos/fastapi-app
           ./deploy.sh
